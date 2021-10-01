@@ -74,6 +74,14 @@ NAME          STATUS   ROLES   AGE    VERSION
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/oracle-japan/oke-handson-guestbook/master/sample-application/guestbook-all-in-one.yaml
 ```
+```sh
+service/redis-master created
+deployment.apps/redis-master created
+service/redis-slave created
+deployment.apps/redis-slave created
+service/frontend created
+deployment.apps/frontend created
+```
 
 3個の'frontend' 2個の'redis-slave' 1個の'redis-master' のPod STATUSが 'Running' になっていることを確認します。
 
@@ -108,4 +116,54 @@ Webブラウザを起動して、'http://132.226.xxx.xxx/' にアクセスしま
 以下の画面が表示されれば完了です。
 
 ![](images/1-012.png)
+
+3.削除処理
+---------------------------------
+
+### 3-1 ロードバランサの削除
+
+```sh
+kubectl delete service frontend
+```
+```sh
+service "frontend" deleted
+```
+
+### 3-2 OCIコンソールからOKEクラスタの削除
+
+左上のハンバーガーメニューを展開して、「開発者サービス」から「Kubernetesクラスタ(OKE)」を選択します。
+
+![](images/1-001.png)
+
+右端にあるメニューをクリックして、「削除」を選択します。
+
+![](images/1-013.png)
+
+「クラスタ名を入力して削除を確認します」に「cluster1」と入力して、「削除」ボタンをクリックします。
+
+![](images/1-014.png)
+
+削除が完了すると、リストから「cluster1」が消えます。
+
+### 3-3 OCIコンソールからネットワークの削除
+
+左上のハンバーガーメニューを展開して、「ネットワーキング」から「仮想クラウド・ネットワーキング」を選択します。
+
+![](images/1-015.png)
+
+「oke-vcn-quick-cluster1-xxxxxxxxx」をクリックします。
+
+![](images/1-016.png)
+
+「削除」ボタンをクリックします。
+
+![](images/1-017.png)
+
+「すべて終了」ボタンをクリックします。
+
+![](images/1-018.png)
+
+「閉じる」ボタンをクリックします。
+
+![](images/1-019.png)
 
