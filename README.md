@@ -72,7 +72,7 @@ NAME          STATUS   ROLES   AGE    VERSION
 'kubectl' コマンドを利用して、作成したKubernetesクラスタにサンプルアプリケーションをデプロイします。
 
 ```sh
-kubectl apply -f 
+kubectl apply -f https://raw.githubusercontent.com/oracle-japan/oke-handson-guestbook/master/sample-application/guestbook-all-in-one.yaml
 ```
 
 3個の'frontend' 2個の'redis-slave' 1個の'redis-master' のPod STATUSが 'Running' になっていることを確認します。
@@ -82,12 +82,12 @@ kubectl get pods
 ```
 ```sh
 NAME                           READY   STATUS    RESTARTS   AGE
-frontend-6c6d6dfd4d-csw9q      1/1     Running   0          2m36s
-frontend-6c6d6dfd4d-dh549      1/1     Running   0          2m36s
-frontend-6c6d6dfd4d-hpggl      1/1     Running   0          2m36s
-redis-master-f46ff57fd-pd5zv   1/1     Running   0          2m38s
-redis-slave-7979cfdfb8-wm54l   1/1     Running   0          2m36s
-redis-slave-7979cfdfb8-zpl9b   1/1     Running   0          2m36s
+frontend-6c6d6dfd4d-7nnpf      1/1     Running   0          29s
+frontend-6c6d6dfd4d-slwrs      1/1     Running   0          29s
+frontend-6c6d6dfd4d-vjwls      1/1     Running   0          29s
+redis-master-f46ff57fd-q6gpp   1/1     Running   0          32s
+redis-slave-7979cfdfb8-bxkwb   1/1     Running   0          30s
+redis-slave-7979cfdfb8-n8pcq   1/1     Running   0          30s
 ```
 
 Webブラウザでアクセスするために、'EXTERNAL-IP'を確認します。
@@ -96,14 +96,14 @@ Webブラウザでアクセスするために、'EXTERNAL-IP'を確認します�
 kubectl get services
 ```
 ```sh
-NAME           TYPE           CLUSTER-IP      EXTERNAL-IP       PORT(S)        AGE
-frontend       LoadBalancer   10.96.34.254    150.230.xxx.xxx   80:31137/TCP   5m38s
-kubernetes     ClusterIP      10.96.0.1       <none>            443/TCP        17m
-redis-master   ClusterIP      10.96.105.12    <none>            6379/TCP       5m41s
-redis-slave    ClusterIP      10.96.248.228   <none>            6379/TCP       5m39s
+NAME           TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
+frontend       LoadBalancer   10.96.225.11   132.226.xxx.xxx  80:32630/TCP   46s
+kubernetes     ClusterIP      10.96.0.1      <none>           443/TCP        37m
+redis-master   ClusterIP      10.96.22.84    <none>           6379/TCP       49s
+redis-slave    ClusterIP      10.96.63.255   <none>           6379/TCP       47s
 ```
 
-Webブラウザを起動して、'http://150.230.xxx.xxx/' にアクセスします。
+Webブラウザを起動して、'http://132.226.xxx.xxx/' にアクセスします。
 
 以下の画面が表示されれば完了です。
 
