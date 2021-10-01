@@ -74,6 +74,7 @@ NAME          STATUS   ROLES   AGE    VERSION
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/oracle-japan/oke-handson-guestbook/master/sample-application/guestbook-all-in-one.yaml
 ```
+***コマンド結果***
 ```sh
 service/redis-master created
 deployment.apps/redis-master created
@@ -88,6 +89,7 @@ deployment.apps/frontend created
 ```sh
 kubectl get pods
 ```
+***コマンド結果***
 ```sh
 NAME                           READY   STATUS    RESTARTS   AGE
 frontend-6c6d6dfd4d-7nnpf      1/1     Running   0          29s
@@ -103,6 +105,7 @@ Webブラウザでアクセスするために、'EXTERNAL-IP'を確認します�
 ```sh
 kubectl get services
 ```
+***コマンド結果***
 ```sh
 NAME           TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)        AGE
 frontend       LoadBalancer   10.96.225.11   132.226.xxx.xxx  80:32630/TCP   46s
@@ -125,6 +128,7 @@ Webブラウザを起動して、'http://132.226.xxx.xxx/' にアクセスしま
 ```sh
 kubectl delete service frontend
 ```
+***コマンド結果***
 ```sh
 service "frontend" deleted
 ```
